@@ -63,6 +63,8 @@ button:focus {
   overflow: auto;
   justify-content: center;
   padding-bottom: 200px;
+  margin-top: 50px;
+  max-width: 1200px;
 }
 
 .card{

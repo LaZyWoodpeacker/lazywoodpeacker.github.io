@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 import { Provider } from 'react-redux'
 import './index.css';
 import List from './List';

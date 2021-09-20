@@ -22,14 +22,16 @@ function reducer(state, action) {
             return { ...state, list: remList };
         case 'CH_LIST':
             const list = [...state.list];
-            list.splice(action.payload.curId, 1, action.payload.obj);
+            list.splice(action.payload.bookId, 1, action.payload.obj);
             save(list);
             return { ...state, list: list, save: true };
         case 'GET_LIST':
-            return { ...state, list: action.payload };
+            const payload = JSON.parse(localStorage.getItem('data'));
+            return { ...state, list: payload };
         default:
             return newStore
     }
+    console.log(state);
 }
 
 export default createStore(reducer, applyMiddleware(thunk));
