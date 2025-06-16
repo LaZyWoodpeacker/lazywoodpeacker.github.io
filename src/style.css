@@ -26,12 +26,12 @@ body {
   height:800px;
   margin: 0 auto;
   text-align: center;
-  background-color:white;
+  background-color:#dce6eb;
   position:relative;
 }
 
 .square{
-  border:5px solid red;
+  border:2px solid red;
   position: absolute;
   box-sizing: border-box;
   user-select: none;
@@ -46,13 +46,11 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #bdbdbd;
   width: 200px;
   height: 100px;
-  border-radius: 25px;
   right: 20px;
-  top:20px;
-
+  top:40px;
+  
 }
 
 #debug{
@@ -64,7 +62,8 @@ body {
 #colorSelector{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  
+  user-select: none;
 }
 
 .colorSelectItem{
@@ -74,4 +73,26 @@ body {
   margin: 5px;
   cursor: pointer;
   border:2px solid 
+}
+
+.color-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  flex-direction: column;
+  background-color: white;
+  padding: 0 2em ;
+  padding-bottom: 1em;
+  color: black;
+  border: 1px solid #c4ced8;
+}
+
+#btn{
+  color:white;
+  background-color: #6455f5;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor:pointer;
+  margin-top: 10px;
+  user-select: none;
 }

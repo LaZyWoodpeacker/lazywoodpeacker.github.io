@@ -10,16 +10,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (groups.length === 1) {
       const groupA = new Group(border, [squareA]);
       const groupB = new Group(border, [squareB]);
-      groupA.setPositionCollide(
-        groupA.maxX * Math.random(),
-        groupA.maxY * Math.random()
-      );
-      groupB.setPositionCollide(
-        groupB.maxX * Math.random(),
-        groupB.maxY * Math.random(),
-        groupA
-      );
+      let [aX, bX] =
+        groupA.left <= groupB.left
+          ? [
+              Math.random() * groupA.left,
+              Math.random() * (groupB.maxX - groupB.left) + groupB.left,
+            ]
+          : [
+              Math.random() * (groupA.maxX - groupA.left) + groupB.left,
+              Math.random() * groupB.left,
+            ];
+      let [aY, bY] =
+        groupA.top <= groupB.top
+          ? [
+              Math.random() * groupA.top,
+              Math.random() * (groupB.maxY - groupB.top) + groupB.top,
+            ]
+          : [
+              Math.random() * (groupA.maxY - groupA.top) + groupA.top,
+              Math.random() * groupB.top,
+            ];
+
+      groupA.setPositionCollide(aX + groupA.offsetX, aY + groupA.offsetY);
+      groupB.setPositionCollide(bX + groupB.offsetX, bY + groupB.offsetY);
       groups = [groupA, groupB];
+      options.setButtonVisible(false);
     }
   });
 
@@ -56,6 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
         : [groups[1], groups[0]];
       if (mesh.setPositionCollide(e.clientX, e.clientY, collide)) {
         groups = [new Group(border, [squareA, squareB])];
+        groups[0].onMouseDown(e);
+        options.setButtonVisible(true);
       }
     }
   });
